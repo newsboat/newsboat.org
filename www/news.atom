@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Newsboat</title>
+    <link href="https://newsboat.org/news.atom" rel="self" />
+    <link href="https://newsboat.org" />
+    <id>https://newsboat.org/news.atom</id>
+    <author>
+        <name>Alexander Batischev</name>
+        <email>eual.jp@gmail.com</email>
+    </author>
+    <updated>2025-03-23T21:00:00Z</updated>
+
+    <entry>
+        <title>Newsboat 2.39 is out</title>
+        <link href="https://newsboat.org/releases/2.39/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.39/docs/newsboat.html</id>
+        <updated>2025-03-23T21:00:00Z</updated>
+        <published>2025-03-23T21:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                The new key-binding system mentioned in the previous entry is
+                finally here! After years of work, done primarily by Dennis van
+                der Schagt, we now have a <code>bind</code> command that:
+
+                <ul>
+                    <li>
+                        can create multi-key bindings, i.e. one can bind not
+                        just single letters (with Control or Shift), but also
+                        sequences of letters (each with their own modifiers);
+                    </li>
+                    <li>
+                        allows each binding to execute multiple actions, just
+                        like our existing <code>macro</code> command. Unlike macros,
+                        <code>bind</code> doesn't require a "macro prefix",
+                            so one can finally bind a sequence of operations
+                            to a <emph>single</emph> key;
+                    </li>
+                    <li>
+                        allows adding documentation strings to each binding,
+                        which are then shown in the help dialog. This again is
+                        an improvement upon macros, which had no descriptions and
+                        didn't have a way for the user to provide their own;
+                    </li>
+                    <li>
+                        adds alternative syntax for keys. Instead of the usual
+                        <code>^R</code> syntax, one can now use
+                        <code>&lt;C-r&gt;</code> a la Tmux or Emacs. Hopefully
+                        this makes multi-key bindings easier to read.
+                    </li>
+                </ul>
+            </p>
+
+            <p>
+                The feature is very new, and probably contains bugs. Please
+                report them! In fact, it's so new that we didn't have time to
+                finish the corresponding <code>unbind</code> command LOL.
+                However, since Newsboat doesn't have any multi-key bindings
+                by default, <code>unbind</code> was deemed to not be a release blocker.
+            </p>
+
+            <p>
+                The new feature also has a limitation in that multi-key bindings
+                that have the same prefix must have the same length. In other
+                words, it's fine to have <code>abc</code> and <code>abx</code>
+                bound simultaneously, but it's not possible to bind both
+                <code>ab</code> and <code>abc</code> at the same time.
+                This is to avoid an ambiguity when the prefix is typed;
+                in that case Newsboat would have to decide somehow
+                if the next key is going to be <code>c</code>.
+            </p>
+
+            <p>
+                We are all very proud of this feature, and eagerly awaiting your
+                feedback! Please try it, and open an issue if something doesn't
+                work or could be improved.
+            </p>
+
+            <p>
+                One more thing: we now require a compiler that accepts
+                <code>-std=c++17</code> flag. In other words, we dropped Clang 4
+                support. This is due to libicu 75 requiring C++17; we depend on
+                this library via libxml2, and the requirement bleeds through to
+                us because we're indirectly including some of libicu header files.
+            </p>
+
+            <p>
+                Compilers without C++17 support are now considered deprecated.
+                Future Newsboat releases will probably use some of C++17 features,
+                at which point we'll drop support. If that's going to create
+                problems for you, please file an issue.
+            </p>
+
+            <p>Links:
+                    <a href="https://newsboat.org/releases/2.39/newsboat-2.39.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.39/newsboat-2.39.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.39/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.39/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#239---2025-03-23">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.38 is out</title>
+        <link href="https://newsboat.org/releases/2.38/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.38/docs/newsboat.html</id>
+        <updated>2024-12-22T16:00:00Z</updated>
+        <published>2024-12-22T16:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                This release brings a few bug fixes, most notable of which is the
+                <code>cookie-cache</code> setting; it used to be broken for
+                <code>reload-all</code> and <code>auto-reload</code>, but no more.
+                There are also a couple improvements for Miniflux, as well as
+                various little tweaks here and there. More details in
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#238---2024-12-22">the changelog</a>.
+            </p>
+
+            <p>
+                Apart from user-visible changes, there are also ongoing work
+                on the internals. We're progressing towards new key-binding system
+                which should allow multi-key bindings and unify keys with macros.
+                We're also halfway through improving how Newsboat handles file paths;
+                once complete, this should enable us to properly fix the Rust-related
+                crashes that some users are experiencing right now.
+            </p>
+
+            <p>
+                Merry Christmas, and a happy New Year!
+            </p>
+
+            <p>Links:
+                    <a href="https://newsboat.org/releases/2.38/newsboat-2.38.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.38/newsboat-2.38.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.38/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.38/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#238---2024-12-22">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.37 is out, along with bugfix releases for 2.19 through 2.36</title>
+        <link href="https://newsboat.org/releases/2.37/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.37/docs/newsboat.html</id>
+        <updated>2024-09-22T11:00:00Z</updated>
+        <published>2024-09-22T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Since 2.19, Newsboat treated HTTP code 304 (Not Modified) as
+                error, and retried the download up to the limit specified by
+                `download-retries`. The default for that setting is 1, so no
+                harm done, but if the user changed it, Newsboat turned into a
+                request-spamming machine.
+            </p>
+
+            <p>
+                Today’s release fixes that. We’re also making point releases for
+                everything starting from 2.19 all the way up to the previous
+                release, 2.36. If you can upgrade to 2.37, great. If you can't,
+                please, <i>please</i> upgrade to the closest point release you can.
+            </p>
+
+            <p>
+                There are a bunch of other fixes and improvements in 2.37 as
+                well, but they’re less important, so find them in the changelog.
+            <p>
+
+            <p>Links:
+                <ul>
+                    <li>2.37
+                    (<a href="https://newsboat.org/releases/2.37/newsboat-2.37.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.37/newsboat-2.37.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.37/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.37/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#237---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.36.1
+                    (<a href="https://newsboat.org/releases/2.36.1/newsboat-2.36.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.36.1/newsboat-2.36.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.36.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.36.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2361---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.35.1
+                    (<a href="https://newsboat.org/releases/2.35.1/newsboat-2.35.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.35.1/newsboat-2.35.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.35.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.35.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2351---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.34.1
+                    (<a href="https://newsboat.org/releases/2.34.1/newsboat-2.34.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.34.1/newsboat-2.34.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.34.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.34.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2341---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.33.1
+                    (<a href="https://newsboat.org/releases/2.33.1/newsboat-2.33.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.33.1/newsboat-2.33.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.33.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.33.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2331---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.32.1
+                    (<a href="https://newsboat.org/releases/2.32.1/newsboat-2.32.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.32.1/newsboat-2.32.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.32.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.32.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2321---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.31.1
+                    (<a href="https://newsboat.org/releases/2.31.1/newsboat-2.31.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.31.1/newsboat-2.31.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.31.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.31.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2311---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.30.2
+                    (<a href="https://newsboat.org/releases/2.30.2/newsboat-2.30.2.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.30.2/newsboat-2.30.2.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.30.2/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.30.2/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2302---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.29.1
+                    (<a href="https://newsboat.org/releases/2.29.1/newsboat-2.29.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.29.1/newsboat-2.29.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.29.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.29.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2291---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.28.1
+                    (<a href="https://newsboat.org/releases/2.28.1/newsboat-2.28.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.28.1/newsboat-2.28.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.28.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.28.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2281---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.27.1
+                    (<a href="https://newsboat.org/releases/2.27.1/newsboat-2.27.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.27.1/newsboat-2.27.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.27.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.27.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2271---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.26.1
+                    (<a href="https://newsboat.org/releases/2.26.1/newsboat-2.26.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.26.1/newsboat-2.26.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.26.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.26.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2261---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.25.1
+                    (<a href="https://newsboat.org/releases/2.25.1/newsboat-2.25.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.25.1/newsboat-2.25.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.25.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.25.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2251---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.24.1
+                    (<a href="https://newsboat.org/releases/2.24.1/newsboat-2.24.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.24.1/newsboat-2.24.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.24.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.24.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2241---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.23.1
+                    (<a href="https://newsboat.org/releases/2.23.1/newsboat-2.23.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.23.1/newsboat-2.23.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.23.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.23.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2231---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.22.2
+                    (<a href="https://newsboat.org/releases/2.22.2/newsboat-2.22.2.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.22.2/newsboat-2.22.2.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.22.2/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.22.2/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2222---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.21.1
+                    (<a href="https://newsboat.org/releases/2.21.1/newsboat-2.21.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.21.1/newsboat-2.21.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.21.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.21.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2211---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.20.2
+                    (<a href="https://newsboat.org/releases/2.20.2/newsboat-2.20.2.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.20.2/newsboat-2.20.2.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.20.2/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.20.2/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2202---2024-09-22">changelog</a>)
+                    </li>
+                    <li>2.19.1
+                    (<a href="https://newsboat.org/releases/2.19.1/newsboat-2.19.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.19.1/newsboat-2.19.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.19.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.19.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2191---2024-09-22">changelog</a>)
+                    </li>
+                </ul>
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.36 is out</title>
+        <link href="https://newsboat.org/releases/2.36/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.36/docs/newsboat.html</id>
+        <updated>2024-06-22T11:00:00Z</updated>
+        <published>2024-06-22T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+		When I forked Newsbeuter, I decided I‘d make releases every
+		three months. My reasoning was pragmatic: I didn‘t want to ever
+		ask myself “is this enough changes to make a new release”. That
+		approach worked great so far, but occasionally it results in
+		tiny releases like the one we have today.
+            </p>
+
+            <p>
+                There‘s really nothing exciting to say about 2.36, so just upgrade:
+                <a href="https://newsboat.org/releases/2.36/newsboat-2.36.tar.xz">tarball</a>,
+                <a href="https://newsboat.org/releases/2.36/newsboat-2.36.tar.xz.asc">its signature</a>,
+                <a href="https://newsboat.org/releases/2.36/docs/newsboat.html">the docs</a>, and
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#236---2024-06-22">the changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.35 is out</title>
+        <link href="https://newsboat.org/releases/2.35/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.35/docs/newsboat.html</id>
+        <updated>2024-03-24T20:00:00Z</updated>
+        <published>2024-03-24T20:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Another quarter, another Newsboat release!
+            </p>
+
+            <p>
+		The highlight for this one is Feedbin support. Feedbin is an
+		online newsreading service in the vein of Google Reader, and we
+		already support a bunch of similar ones. The feature request
+                for Feedbin specifically was filed 4 years ago, and upvoted
+		19 times — twice more often than the runner-up, a request for
+		separators between groups of feeds. We‘ve been waiting for an
+		interested person to tackle this, and finally James Vaughan
+                showed up with a complete implementation. Please give it a spin
+		if you‘ve been waiting for this functionality all these years,
+                and thanks for your patience!
+            </p>
+
+            <p>
+		Another notable feature is support for item starring with
+		Miniflux. This was on the to-do list for a while too, and was
+		implemented by gilcu3. Interestingly, both of these are first
+		ever contributions; it‘s very nice to see new faces in
+                Newsboat‘s pull requests!
+            </p>
+
+            <p>
+		There‘s also a few new scripts in the contrib directory, and
+		loads of internal reworking by Dennis van der Schagt and others.
+		Probably some new bugs too, but Juho Eerola fixed one in 2.35,
+                so let‘s call it even, ok?
+            </p>
+
+            <p>
+                Well, enough chatter; go grab the source:
+                <a href="https://newsboat.org/releases/2.35/newsboat-2.35.tar.xz">tarball</a>,
+                <a href="https://newsboat.org/releases/2.35/newsboat-2.35.tar.xz.asc">its signature</a>,
+                <a href="https://newsboat.org/releases/2.35/docs/newsboat.html">the docs</a>, and
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#235---2024-03-24">the changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.34 is out</title>
+        <link href="https://newsboat.org/releases/2.34/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.34/docs/newsboat.html</id>
+        <updated>2023-12-25T20:00:00Z</updated>
+        <published>2023-12-25T20:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Here‘s a little update to your favourite RSS/Atom reader,
+                everyone :)
+            </p>
+
+            <p>
+                There aren‘t many user-visible changes though; most of the
+                effort was spent improving things internally. Dennis van der
+                Schagt and bogdasar1985 continue to make progress on various
+                fronts, which should eventually bring us a new key-bind system,
+                help fix the long-standing issue with non-UTF-8 content in old
+                cache.db files, and more.
+            </p>
+
+            <p>
+                Docs also received some updates and polish. Lysander Trischler
+                continues to play a vital role here, reviewing all the
+                docs-related changes and helping authors improve them even
+                further. Incidentally, I don‘t mention any of this work in the
+                changelog; should I?
+            </p>
+
+            <p>
+                Hope you‘ll find this new release at least as good as the
+                previous one. We‘re already working on the next, better one :)
+                Merry Christmas to those who celebrate today, and a happy New
+                Year!
+            </p>
+
+            <p>
+                Here are the files:
+                <a href="https://newsboat.org/releases/2.34/newsboat-2.34.tar.xz">tarball</a>,
+                <a href="https://newsboat.org/releases/2.34/newsboat-2.34.tar.xz.asc">its signature</a>,
+                <a href="https://newsboat.org/releases/2.34/docs/newsboat.html">the docs</a>, and
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#234---2023-12-25">the changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.33 is out</title>
+        <link href="https://newsboat.org/releases/2.33/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.33/docs/newsboat.html</id>
+        <updated>2023-09-24T19:30:00Z</updated>
+        <published>2023-09-24T19:30:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+	<p>It’s my pleasure to announce a new release of Newsboat, the feed
+	reader for the text console. This new version includes a couple notable
+	changes:
+
+	<ul>
+	<li>much faster navigation in large feeds, thanks to the excellent work
+	done by Dennis van der Schagt;</li>
+
+	<li>items in feeds produced by Mastodon now have proper titles rather
+	than a bunch of numbers, and the attached image is displayed inline
+	rather than being lost entirely. This again thanks to Dennis van der
+	Schagt and also Martin Vilcans.</li>
+	</ul>
+	</p>
+
+	<p>There are a few smaller fixes too, which you can discover by
+	yourself by downloading a fresh tarball from the links below ;)
+	</p>
+
+	<p>
+	<a href="https://newsboat.org/releases/2.33/newsboat-2.33.tar.xz">Tarball</a>,
+	<a href="https://newsboat.org/releases/2.33/newsboat-2.33.tar.xz.asc">its signature</a>,
+	<a href="https://newsboat.org/releases/2.33/docs/newsboat.html">the docs</a>, and
+	<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#233---2023-09-24">the changelog</a>.
+	</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.32 is out</title>
+        <link href="https://newsboat.org/releases/2.32/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.32/docs/newsboat.html</id>
+        <updated>2023-06-25T18:00:00Z</updated>
+        <published>2023-06-25T18:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+        <p>It’s the end of June, and so we have another release! As usual of
+        late, it’s rather small. The most noticeable addition is probably the
+        new option, <code>--export-to-opml2</code>, which finally allows to
+        export feed URLs <i>along with their tags</i>. There was also a bit of
+        work on the existing facilities, like the behaviour of
+        <code>goto-feed</code> operation and Newsboat’s support for enclosures
+        in Mastodon feeds; please
+        <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#232---2023-06-25">see the changelog</a>
+        for the full list.</p>
+
+        <p>I (Alexander Batischev) was again pretty much absent from the
+        development, but I feel like the break did me some good, and I’m
+        enthusiastic about getting back into the thick of things. I’m also very
+        happy to see that the project didn’t simply grind to a halt when
+        I stepped back. To me, this indicates that we’re in a better position
+        than Newsbeuter ever was, which is nice because it was one of the goals
+        of this fork. Still have ways to improve of course :)</p>
+
+        <p>Anyway, enough of this navel-gazing! Go compile something from
+        <a href="https://newsboat.org/releases/2.32/newsboat-2.32.tar.xz">the tarball</a>
+        (checking
+        <a href="https://newsboat.org/releases/2.32/newsboat-2.32.tar.xz.asc">its signature</a>
+        beforehand, of course), glance through
+        <a href="https://newsboat.org/releases/2.32/docs/newsboat.html">the docs</a>
+        (or maybe don’t — they didn’t change :), and see if anything in
+        <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#232---2023-06-25">the changelog</a>
+        affects your workflow.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.31 is out</title>
+        <link href="https://newsboat.org/releases/2.31/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.31/docs/newsboat.html</id>
+        <updated>2023-03-26T20:00:00Z</updated>
+        <published>2023-03-26T20:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+		<p>Yet another small release. It was developed almost without
+		my involvement: I lost all the mental energy towards the end of
+		2022, so Dennis van der Schagt and Lysander Trischler
+		shouldered the burden. Kudos to them, and also the people who
+		responded to questions on IRC and the mailing list!</p>
+
+		<p>BTW, we could definitely use more help with, um, helping
+		users. If you ever read more than a paragraph of Newsboat docs,
+		you are definitely qualified! Please feel welcome to join
+		#newsboat on Libera.Chat, subscribe to our mailing list at
+		newsboat@googlegroups.com, or watch our issue tracker on
+		GitHub. (Sorry for the reliance on Big Tech; but email hosting
+		scares me, and FediForge isn’t here yet.)</p>
+
+		<p>And while you wait for an IRC question that will pique your
+		interest, maybe try this little program that lets you read news
+		via a single inerface ;) Download
+		<a href="https://newsboat.org/releases/2.31/newsboat-2.31.tar.xz">the tarball</a> and
+		<a href="https://newsboat.org/releases/2.31/newsboat-2.31.tar.xz.asc">its signature</a> from our site,
+		read <a href="https://newsboat.org/releases/2.31/docs/newsboat.html">docs</a>, and peruse
+		<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#231---2023-03-26">the
+		changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.30.1 is out</title>
+        <link href="https://newsboat.org/releases/2.30.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.30.1/docs/newsboat.html</id>
+        <updated>2022-12-30T19:00:00Z</updated>
+        <published>2022-12-30T19:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+		<p>This release fixes build failure with curl 7.87. It only just 
+		came out, so this shouldn’t affect many people right now, but I 
+		decided to make a patch release anyway, because disros are bound 
+		to pick up 7.87 before the next Newsboat release.</p>
+
+		<p>Please get the update from our site:
+		<a href="https://newsboat.org/releases/2.30.1/newsboat-2.30.1.tar.xz">the tarball</a> and
+		<a href="https://newsboat.org/releases/2.30.1/newsboat-2.30.1.tar.xz.asc">its signature</a>,
+		<a href="https://newsboat.org/releases/2.30.1/docs/newsboat.html">docs</a>, and
+		<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2301---2022-12-30">the
+		changelog entry</a>.</p>
+
+		<p>P.S. I prepare this news feed by hand, and I messed up article 
+		GUIDs in the last update. Don't worry if your newsreader tells 
+		you the 2.29 release entry was updated, or if you see the 2.30 
+		announcement only now — this is an expected result of my 
+		mistake.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.30 is out</title>
+        <link href="https://newsboat.org/releases/2.30/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.30/docs/newsboat.html</id>
+        <updated>2022-12-25T14:00:00Z</updated>
+        <published>2022-12-25T14:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+		<p>Another quarter passed, so another release is out! Just like 
+		the last few, it’s rather small, so I won’t bore you with a 
+		recap — simply read <a 
+		href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.m
+		d#230---2022-12-25">the changelog</a>.</p>
+
+		<p>The new version can be downloaded from our site:
+		<a href="https://newsboat.org/releases/2.30/newsboat-2.30.tar.xz">the tarball</a> and
+		<a href="https://newsboat.org/releases/2.30/newsboat-2.30.tar.xz.asc">its signature</a>,
+		<a href="https://newsboat.org/releases/2.30/docs/newsboat.html">docs</a>, and
+		<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#230---2022-12-25">the
+		changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.29 is out</title>
+        <link href="https://newsboat.org/releases/2.29/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.29/docs/newsboat.html</id>
+        <updated>2022-09-25T18:30:00Z</updated>
+        <published>2022-09-25T18:30:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+		<p>All the release cycles of late have been fairly quiet, and 
+		this one is no exception. We fixed some bugs and made some minor 
+		tweaks, but that’s it.</p>
+
+		<p>If you’re verifying our GPG signatures (as you should), 
+		please re-download our key as we bumped its expiry date.</p>
+
+		<p>That’s it for now. As usual, you can get everyting from our site:
+		<a href="https://newsboat.org/releases/2.29/newsboat-2.29.tar.xz">the tarball</a> and
+		<a href="https://newsboat.org/releases/2.29/newsboat-2.29.tar.xz.asc">its signature</a>,
+		<a href="https://newsboat.org/releases/2.29/docs/newsboat.html">docs</a>, and
+		<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#229---2022-09-25">the
+		changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.28 is out</title>
+        <link href="https://newsboat.org/releases/2.28/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.28/docs/newsboat.html</id>
+        <updated>2022-06-26T20:00:00Z</updated>
+        <published>2022-06-26T20:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+		<p>For once, the development cycle was so quiet that I can 
+		enumerate all the noteworthy changes in this release. They 
+		are:</p>
+
+		<p><b>Ability to go back to previous set of search results.</b> 
+		We’ve all been there: searched for something, then searched 
+		again with a more specific query, refined it once more, but then 
+		we made a typo or picked wrong words — and bam, the results 
+		we’re looking at aren’t what we wanted to see. Before 2.28, 
+		the only recourse was to start the process anew. With 2.28, all 
+		one has to do is press <i>z</i>, which will bring back the 
+		previous results. Pressing it once more will of course go further 
+		back, until we’re at the very first set of results again. This 
+		change is accompanied by a new placeholder for 
+		<code>searchresult-title-format<code> setting, <code>%s</code>, 
+		which is replaced by the current search term; you won’t get 
+		lost in the searches, promise!</p>
+
+		<p><b>Enqueueing podcasts straight from the article list.</b> 
+		Such a simple feature, yet it took <i>this</i> long to notice 
+		that it’s missing. As a bonus, <code>articlelist-format</code> 
+		now supports <code>%e</code> placeholder which is replaced by the 
+		URL of the enclosure; that way, you can see what you’re going 
+		to enqueue.</p>
+
+		<p><b>If an article has multiple links, 
+		<code>open-in-browser</code> will open the HTTP(S) one.</b> This 
+		is about the link you see at the top of the article, prefixed by 
+		"Link:". The standards allow an article to have multiple such 
+		links, but Newsboat only supports one, and it now tries to pick 
+		more intelligently. If the article doesn’t specify any HTTP(S) 
+		links, the last one to appear in the source code will be 
+		picked.</p>
+
+		<p>That’s it for now. Please download Newsboat 2.28 from the usual place:
+		<a href="https://newsboat.org/releases/2.28/newsboat-2.28.tar.xz">the tarball</a>,
+		<a href="https://newsboat.org/releases/2.28/newsboat-2.28.tar.xz.asc">its signature</a> and
+		<a href="https://newsboat.org/releases/2.28/docs/newsboat.html">docs</a>,
+		<a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#228---2022-06-26">the
+		changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.27 is out</title>
+        <link href="https://newsboat.org/releases/2.27/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.27/docs/newsboat.html</id>
+        <updated>2022-03-22T19:10:00Z</updated>
+        <published>2022-03-22T19:10:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>One more slow, quiet development cycle is past us.</p>
+
+            <p>We’ve added just one new feature: <code>ignore-article</code>
+            can now be applied to feeds that match a particular regular
+            expression. This should help you DRY your configs, or improve
+            performance if you were already doing something like <code>feedurl
+            =~ "https://example.com/feed/.*"</code>.</p>
+
+            <p>Another highlight &mdash;a literal highlight&mdash; of this
+            release are our manpages. We added some formatting (bold font and
+            underlining) to make the settings and options easier to spot.
+            Hopefully this improves the readibility and makes the manpages even
+            more useful!</p>
+
+            <p>Oh, and we also fixed some bugs. Please see the changelog for
+            details on that.</p>
+
+            <p>That’s about it. Go get 2.27 now:
+                <a href="https://newsboat.org/releases/2.27/newsboat-2.27.tar.xz">the tarball</a>,
+                <a href="https://newsboat.org/releases/2.27/newsboat-2.27.tar.xz.asc">its signature</a> and
+                <a href="https://newsboat.org/releases/2.27/docs/newsboat.html">docs</a>,
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#227---2022-03-22">the
+                changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.26 is out</title>
+        <link href="https://newsboat.org/releases/2.26/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.26/docs/newsboat.html</id>
+        <published>2021-12-27T18:00:00Z</published>
+        <updated>2021-12-27T18:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Here’s a tiny little New Years present for you!</p>
+
+	    <p>This development cycle was even quieter than the previous one.
+	    We added a new setting, <code> confirm-mark-feed-read </code>,
+	    to prevent users from accidentally marking an entire feed as read.
+	    Search results no longer show ignored articles (d’oh!) We’ve taken
+	    away ability to switch away from file- and dirbrowser, which closes
+	    an entire set of possible bugs.</p>
+
+	    <p>Happy holidays everyone, and a happy New Year!</p>
+            
+            <p>You can find the source code and everything else on our site:
+            <a href="https://newsboat.org/releases/2.26/newsboat-2.26.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.26/newsboat-2.26.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.26/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#226---2021-12-27">the
+            changelog entry</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.25 is out</title>
+        <link href="https://newsboat.org/releases/2.25/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.25/docs/newsboat.html</id>
+        <published>2021-09-20T15:10:00Z</published>
+        <updated>2021-09-20T15:10:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>The last three months felt pretty quiet, especially towards the
+            end of the cycle, but we still got quite a few things done. The
+            most noticeable of them is the UI change: the keymap hints at the
+            bottom of the screen now use more colours and formatting, making
+            the entire line easier to read.</p>
+
+            <p>We also fixed three crashes and two performance regressions, so
+            that’s good too.</p>
+
+            <p>Not a groundbreaking release by any means, but it’s still worth
+            upgrading I think :)</p>
+            
+            <p>You can find everything on our site:
+            <a href="https://newsboat.org/releases/2.25/newsboat-2.25.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.25/newsboat-2.25.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.25/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#225---2021-09-20">the
+            changelog entry</a>. Please note that the expiry date of our PGP
+            key was extended; don’t forget to
+            <a href="https://newsboat.org/newsboat.pgp">fetch an updated key from us</a>
+            or your favourite keyserver.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.24 is out</title>
+        <link href="https://newsboat.org/releases/2.24/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.24/docs/newsboat.html</id>
+        <published>2021-06-20T18:20:00Z</published>
+        <updated>2021-06-20T18:20:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Another three months went by, so here's a new release! The pace
+            we picked up last year slowly dissipates, so 2.24 is more like 2.23
+            than, say, 2.20. Still, this is a pretty interesting release: we
+            added a way to document macros, implemented support for plaintext
+            entries —you'll love this one if you read antirez' or YouTube's
+            feeds!— and added support for FreshRSS. Plus a usual crop of bug
+            fixes, of course. Check it out!</p>
+
+            <p>You can find everything on our site:
+            <a href="https://newsboat.org/releases/2.24/newsboat-2.24.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.24/newsboat-2.24.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.24/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#224---2021-06-20">the changelog entry</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Our IRC channel is now on Libera.Chat</title>
+        <link href="https://newsboat.org/index.html#20210526liberachat" />
+        <id>https://newsboat.org/index.html#20210526liberachat</id>
+        <published>2021-05-26T12:59:00Z</published>
+        <updated>2021-05-26T12:59:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Hi folks,</p>
+
+            <p>You might’ve heard of the drama around Freenode, the IRC
+            network. <a href="https://kline.sh">Their volunteer staff quit</a>,
+            and the new-ish management started making really weird moves (see
+            <a href="https://github.com/freenode/web-7.0/pull/513">here</a> and
+            <a href=" https://www.devever.net/~hl/freenode_abuse">here</a>). For
+            the past week, we on #newsboat were <a
+            href="https://github.com/newsboat/newsboat/issues/1643">discussing
+            where to move</a>. The deadline was set to June 5th, but today, our
+            hand was forced: Freenode revoked my access to the channel, muted
+            everyone in it, and changed the topic to suggest using ##newsboat
+            instead. Presumably, this is a reaction to us considering the
+            move.</p>
+
+            <p>Luckily the decision was all but sealed at that point: half our
+            IRC users were already on Libera.Chat, and there was no votes
+            against moving there entirely. Libera currently lacks a Matrix
+            bridge and a webchat, but those things are being worked on, and
+            aren’t blockers in the long run.</p>
+
+            <p>Please update your mental bookmarks: next time you want to chat,
+            join #newsboat on <a
+            href="https://libera.chat">irc.libera.chat</a>. See you there!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.23 is out</title>
+        <link href="https://newsboat.org/releases/2.23/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.23/docs/newsboat.html</id>
+        <published>2021-03-21T23:30:00Z</published>
+        <updated>2021-03-21T23:30:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>It’s this time of year again — time to update your Newsboats!
+            While writing the changelog for this release, I got worried that we
+            might not have enough user-visible changes, but those worries
+            turned out to be unfounded. As we continue to overhaul Newsboat's
+            internals, we somehow found the time to fix a couple bugs as well!
+            Please take a look at <a
+            href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#223---2021-03-21">the
+            list</a> and find <i>your</i> reason to upgrade there :)</p>
+
+            <p>Everything is available on our site at the usual locations:
+            <a href="https://newsboat.org/releases/2.23/newsboat-2.23.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.23/newsboat-2.23.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.23/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#223---2021-03-21">the changelog entry</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.22.1 is out</title>
+        <link href="https://newsboat.org/releases/2.22.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.22.1/docs/newsboat.html</id>
+        <published>2021-01-09T23:00:00Z</published>
+        <updated>2021-01-09T23:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>This little release fixes a couple regressions in 2.22:</p>
+
+            <ol>
+
+            <li>slow scrolling in the article list;</li>
+
+            <li>segfaults if <code>swap-title-and-hints</code> is enabled;</li>
+
+            <li>build failure on GCC 9 due to <code>maybe-uninitialized</code>
+                warning which <code>-Werror</code> turns into an error.</li>
+
+            </ol>
+
+            <p>Sorry about those. Apparently our <code>master</code> branch
+            doesn’t get enough testing, so if you can run a version built from
+            Git and report problems early, please do!</p>
+
+            <p>Download this release here:
+            <a href="https://newsboat.org/releases/2.22.1/newsboat-2.22.1.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.22.1/newsboat-2.22.1.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.22.1/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2221---2021-01-10">the changelog entry</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.22 is out</title>
+        <link href="https://newsboat.org/releases/2.22/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.22/docs/newsboat.html</id>
+        <published>2020-12-21T21:00:00Z</published>
+        <updated>2020-12-21T21:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Another Christmas, another Newsboat release! Hope you're used to
+            these by now, because we don't intend to stop shipping
+            them&nbsp;:)</p>
+
+            <p>You all deserve a present, and Newsboat 2.22 contains two! One,
+            it finally learned to ask you for confirmation before marking all
+            feeds as read. No more data loss! (But please make backups anyway.)
+            Another, is a bugfix that should make the infamous "an instance is
+            already running, PID 0" error go away. It's replaced by another
+            error *sigh*, but that one is more descriptive at least.</p>
+
+            <p>Aside from that, this release contains a bunch of smaller, but
+            still very nice, features and bug fixes, so please take a look at
+            the changelog, and then take the new version for a spin!</p>
+
+            <p>Download it here:
+            <a href="https://newsboat.org/releases/2.22/newsboat-2.22.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.22/newsboat-2.22.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.22/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#222---2020-12-21">the changelog entry</a>.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.21 is out</title>
+        <link href="https://newsboat.org/releases/2.21/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.21/docs/newsboat.html</id>
+        <published>2020-09-20T21:00:00Z</published>
+        <updated>2020-09-20T21:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Today is Newsboat’s third birthday, and it caught me by
+            surprise. Mainly because our GPG key stopped working (it expired),
+            but also because it doesn’t actually feel like three years to
+            me.</p>
+
+            <p>It feels way less than that. Three years is a lot of time, yet
+            I didn’t manage to grok all the corners of the codebase. I also
+            didn’t make any architectural changes (except for starting the Rust
+            porting, perhaps — by the way, that effort has been going for two
+            years now!). Even after three years of doing this, it feels like
+            I’m just getting started.</p>
+
+            <p>It also feels far longer than that. Multiple high-volume
+            contributors came and went, each marking an era of sorts. A total
+            of 78 people submitted pull requests, a few emailed patches. Many
+            more reported bugs, discussed new features, described their
+            use-cases. I remember many of those interactions, and it feels
+            surprising that we fit all of them into just three years.</p>
+
+            <p>Even just looking at 2.21’s changelog, I am taken aback by the
+            amount of stuff that we managed to accomplish over the last three
+            months. And the changelog doesn’t even tell the whole story, as we
+            also did quite a lot of refactoring.</p>
+
+            <p>It’s as good a time as any to say thank you. Thanks to all the
+            users who run Newsboat, report bugs, and help us with debugging and
+            testing. Thanks to all the developers who fix and improve things,
+            and spend time addressing all my nitpicks during code review. The
+            project wouldn’t be here without all of you! (That’s a cliche thing
+            to say, but it is actually true: just look how many bugs
+            contributors fix, and notice that my commit activity is correlated
+            with other’s work).</p>
+
+            <p>Okay, enough of my rambling. Go get yourself a shiny new feed
+            reader:
+            <a href="https://newsboat.org/releases/2.21/newsboat-2.21.tar.xz">the tarball</a>,
+            <a href="https://newsboat.org/releases/2.21/newsboat-2.21.tar.xz.asc">its signature</a> and
+            <a href="https://newsboat.org/releases/2.21/docs/newsboat.html">docs</a>,
+            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#221---2020-09-20">the changelog entry</a>.
+            Oh, and do fetch an updated GPG key 4ED6CD61932B9EBE; I bumped the
+            expiry date by a year.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Hotfix: Newsboat 2.20.1 fixes four regressions</title>
+        <link href="https://newsboat.org/releases/2.20.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.20.1/docs/newsboat.html</id>
+        <published>2020-06-24T11:00:00Z</published>
+        <updated>2020-06-24T11:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Newsboat 2.20 was our most broken release so far. It introduced
+                <i>four</i> regressions:</p>
+
+            <ol>
+            <li><code>make install</code> was broken on BSDs because we used
+                a GNU-only flag;</li>
+
+            <li>it unintentionally started requiring a space before the
+                semicolon in macros;</li>
+
+            <li>it could segfault upon startup under certain conditions;</li>
+
+            <li>in Spanish locale, feeds couldn't be sorted via <code>g</code>
+                and <code>G</code> keys.</li>
+            </ol>
+
+            <p>These are all fixed by this release, so please upgrade.</p>
+
+            <p>We added more tests now, so the first two bugs won't happen
+                again. But the other two can only be caught by vigilant users
+                for now, so if you can, please build directly from Git and
+                report everything that's broken.</p>
+
+            <p>Thanks for your patience with us even as we break something
+                every other release!</p>
+
+            <p>Download <a
+                href="https://newsboat.org/releases/2.20.1/newsboat-2.20.1.tar.xz">the
+                tarball</a> and <a
+                href="https://newsboat.org/releases/2.20.1/newsboat-2.20.1.tar.xz.asc">its
+                signature</a> from our site, <a
+                href="https://newsboat.org/releases/2.20.1/docs/newsboat.html">view
+                the docs</a> there, and check out <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2201---2020-06-24">the
+                changelog entry</a> over on GitHub.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.20 is out</title>
+        <link href="https://newsboat.org/releases/2.20/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.20/docs/newsboat.html</id>
+        <published>2020-06-20T17:00:00Z</published>
+        <updated>2020-06-20T17:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Hey everyone, hope you’re all doing well.</p>
+
+            <p>We didn’t set out to make it like that, but the new release is
+            balanced in every way. There are as many visible changes as
+            behind-the-scenes refactorings, and the visible changes are split
+            evenly between bugfixes, improvements, and new features. I’m happy
+            to report that, despite the current world situation, Newsboat’s
+            development chugs along as usual.</p>
+
+            <p>Download <a
+                href="https://newsboat.org/releases/2.20/newsboat-2.20.tar.xz">the
+                tarball</a> and <a
+                href="https://newsboat.org/releases/2.20/newsboat-2.20.tar.xz.asc">its
+                signature</a> from our site, <a
+                href="https://newsboat.org/releases/2.20/docs/newsboat.html">view
+                the docs</a> there, and check out <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#220---2020-06-20">the
+                changelog entry</a> over on GitHub.</p>
+
+            <p>Please stay safe and watch out for each other, folks!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.19 is out</title>
+        <link href="https://newsboat.org/releases/2.19/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.19/docs/newsboat.html</id>
+        <published>2020-03-22T20:00:00Z</published>
+        <updated>2020-03-22T20:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Hope this release finds you in good health.</p>
+
+            <p>Over the last few months, we squashed a truckload of bugs. In
+                that regard this release can even rival our debut 2.10. So do
+                look through the changelog; I bet you’ll find something that
+                used to affect you ;)</p>
+
+            <p>Download <a
+                href="https://newsboat.org/releases/2.19/newsboat-2.19.tar.xz">the
+                tarball</a> and <a
+                href="https://newsboat.org/releases/2.19/newsboat-2.19.tar.xz.asc">its
+                signature</a> from our site, <a
+                href="https://newsboat.org/releases/2.19/docs/newsboat.html">view
+                the docs</a> there, and check out <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#219---2020-03-22">the
+                changelog entry</a> over on GitHub.</p>
+
+            <p>Stay safe, folks, and don't forget to wash your hands!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.18 is out</title>
+        <link href="https://newsboat.org/releases/2.18/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.18/docs/newsboat.html</id>
+        <published>2019-12-22T20:00:00Z</published>
+        <updated>2019-12-22T20:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Your regularly scheduled Newsboat release is on the dot!</p>
+
+            <p>Code-wise, this is a pretty uneventful one. Most of the work
+                was related to upkeep — slight refactorings, fixes, tweaks to
+                the infrastructure. But we did manage to squeeze a couple
+                bugfixes in there, too: <code>unbind-key -a</code> no longer
+                breaks command line, and Newsboat no longer ignores browser’s
+                exit code when marking article as read.</p>
+
+            <p>Perhaps the most user-visible change this time around is the
+                logo. That’s right: a user by the name of noobilanderi sat down
+                with Inkscape and drew us <a
+                href="https://github.com/newsboat/newsboat/blob/master/logo.svg">a
+                logo</a>. This is now used everywhere: site’s favicon, GitHub
+                avatar, and the Snap Store.</p>
+
+            <p>Download <a
+                href="https://newsboat.org/releases/2.18/newsboat-2.18.tar.xz">the
+                tarball</a> and <a
+                href="https://newsboat.org/releases/2.18/newsboat-2.18.tar.xz.asc">its
+                signature</a> from our site, <a
+                href="https://newsboat.org/releases/2.18/docs/newsboat.html">view
+                the docs</a> there, and check out <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#218---2019-12-22">the
+                changelog entry</a> over on GitHub.</p>
+
+            <p>Merry Christmas, everyone, and a happy New Year!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.17.1 fixes two critical bugs</title>
+        <link href="https://newsboat.org/releases/2.17.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.17.1/docs/newsboat.html</id>
+        <published>2019-10-02T20:00:00Z</published>
+        <updated>2019-10-02T20:00:00Z</updated>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>Within days of 2.17 release, we got reports of two regressions.</p>
+
+            <p>Users who set <code>max-items</code> (to limit the number of
+                articles that Newsboat stores) found that no feeds are updated
+                anymore. That was an unintended consequence of the “slight
+                performance improvement” I mentioned in the previous entry;
+                I thought Newsboat is doing useless work, when in fact that
+                work was necessary for the <code>max-items</code> setting to
+                function properly. The “improvement” was partially
+                reverted to amend this.</p>
+
+            <p>The second, no less severe, regression prevented Newsboat from
+                loading configs that used <code>#</code> character for anything
+                but comments, e.g. as part of a regular expression for
+                <code>highlight-article</code>. This was a result of another
+                bugfix, where I failed to consider if the hash sign can occur
+                in the middle of a config string. We couldn’t simply revert
+                this one, so I implemented yet another bugfix, that hopefully
+                squashes both the original bug and the regression, while not
+                introducing any new ones.</p>
+
+            <p>Sorry about the mess. Please download the bugfix release from out site: <a
+                href="https://newsboat.org/releases/2.17.1/newsboat-2.17.1.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.17.1/newsboat-2.17.1.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.17.1/docs/newsboat.html">the
+                docs</a>. <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2171---2019-10-02">The
+                changelog is on GitHub</a> as usual.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.17 is out</title>
+        <link href="https://newsboat.org/releases/2.17/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.17/docs/newsboat.html</id>
+        <published>2019-09-22T20:00:00Z</published>
+        <updated>2019-09-22T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>With this release, Newsboat gained a new feature: you can now
+                save <i>all</i> the articles in the feed to text files, by
+                invoking <code>save-all</code> operation (it’s not bound to any
+                key by default). There’s also a few bug fixes, and even
+                a slight performance improvement.</p>
+
+            <p>The codebase is now 18.7% Rust (according to GitHub). I think we
+                picked most of the low-hanging fruit by now. I expect the
+                rewrite to progress more slowly from here on, as we need to
+                untangle dependencies between sub-systems.</p>
+
+            <p>Grab the release from our site—<a
+                href="https://newsboat.org/releases/2.17/newsboat-2.17.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.17/newsboat-2.17.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.17/docs/newsboat.html">the
+                docs</a>, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#217---2019-09-22">view
+                the changelog on GitHub</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Hotfix: Newsboat 2.16.1 fixes the build on FreeBSD and i386</title>
+        <link href="https://newsboat.org/releases/2.16.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.16.1/docs/newsboat.html</id>
+        <published>2019-06-26T20:00:00Z</published>
+        <updated>2019-06-26T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>We don’t have continuous integration for FreeBSD and/or i386, so
+                we were absolutely oblivious to the fact that Newsboat couldn’t
+                be built on those for over a month now. Luckily for us, Tobias
+                Kortkamp already figured out the fixes, which we release now;
+                thanks, mate!</p>
+
+            <p>The very next thing I’m going to do is finally set up a CI for
+                FreeBSD, and see if i386 can be added to Travis pipeline.</p>
+
+            <p>I’m sorry about the mess and the noise, folks. Won’t make this
+                particular mistake again.</p>
+
+            <p>You can download the hotfix release here: <a
+                href="https://newsboat.org/releases/2.16.1/newsboat-2.16.1.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.16.1/newsboat-2.16.1.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.16.1/docs/newsboat.html">the
+		docs</a>, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2161---2019-06-26">the
+                changelog is on GitHub</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.16 is out</title>
+        <link href="https://newsboat.org/releases/2.16/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.16/docs/newsboat.html</id>
+        <published>2019-06-25T20:00:00Z</published>
+        <updated>2019-06-25T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Another quarter, another release! We fixed a couple of bugs, and
+                got a few user-contributed colorschemes and scripts.</p>
+
+            <p>But the bulk of the work is under the hood. Newsboat is now
+                13.4% Rust (by GitHub's count), which is almost double compared
+                to the previous release. If we sustain the 6.5%-per-release
+                momentum, the rewrite will be done in three and a half
+                years—without any loss of functionality, but with a lot more
+                bugs fixed.</p>
+
+            <p>Download it from our site: <a
+                href="https://newsboat.org/releases/2.16/newsboat-2.16.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.16/newsboat-2.16.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.16/docs/newsboat.html">the
+		docs</a>, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#216---2019-06-25">the
+                changelog is on GitHub</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.15 is out</title>
+        <link href="https://newsboat.org/releases/2.15/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.15/docs/newsboat.html</id>
+        <published>2019-03-23T20:00:00Z</published>
+        <updated>2019-03-23T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>It’s second-to-last weekend of March, so it’s time for a new
+                release. Please welcome Newsboat 2.15!</p>
+
+            <p>2.14.1 was released just over a month ago, and stole many of the
+                features meant for 2.15. As a result, this release is quite
+                slim. The only new features are a way to shuffle a feed, and
+                “delete all items” that now works in query feeds. The rest is
+                the usual crop of bugfixes.</p>
+
+            <p>The Rust rewrite is progressing slowly but steadily. This
+                release could be bigger have I not chosen to hold off a big
+                chunk of code that hasn’t been field-tested yet. (Believe it or
+                not, we <b>do</b> test some of the stuff before the
+                release). If GitHub is to be believed, 6.9% of our code is now
+                in Rust.</p> 
+
+            <p>Download the new release from our site: <a
+                href="https://newsboat.org/releases/2.15/newsboat-2.15.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.15/newsboat-2.15.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.15/docs/newsboat.html">the
+		docs</a>, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#215---2019-03-23">the
+                changelog is on GitHub</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.14.1 fails to build with Rust 1.25</title>
+        <link href="https://newsboat.org/index.html#20190211ftbrust125" />
+        <id>https://newsboat.org/index.html#20190211ftbrust125</id>
+        <published>2019-02-11T20:00:00Z</published>
+        <updated>2019-02-11T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Hey there,</p>
+
+            <p>Turns out Newsboat 2.14.1 fails to build with Rust 1.25.
+                That's the oldest Rust release we support; it was published at
+                the end of March 2018. Rust 1.26 and newer work fine.</p>
+
+            <p>This is entirely my fault: I bumped our crates' versions without
+                updating the Cargo.lock. Rust 1.25 trusts the lock file blindly,
+                and fails when it can't find the old crate versions specified there.</p>
+
+            <p>The problem has been fixed in the master branch. See
+                <a href="https://github.com/newsboat/newsboat/commit/cbad27a19d270f2f0fce9317651e2c9f0aa22865.patch">this
+                patch</a>. You can generate a more conservative version (that
+                doesn't update third-party crates) with <code>cargo update
+                --package libnewsboat --package libnewsboat-ffi</code>.</p>
+
+            <p>With just one compiler version affected, I don't feel this is
+                important enough for another point release, so I won't be
+                issuing any.</p>
+
+            <p>If this inconveniences you in any way, I'd like to hear from
+                you! I'm genuinely interested in how old a Rust compiler I
+                should support. I arrived at 1.25 lower bound in a totally
+                unsystematic way: picked what Debian stable had, then bumped
+                one version up because of some crate I added as a dependency.
+                Please <a href="https://newsboat.org/">get in touch</a> if
+                you're using anything older than latest stable.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.14.1 is out</title>
+        <link href="https://newsboat.org/releases/2.14.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.14.1/docs/newsboat.html</id>
+        <published>2019-02-10T20:00:00Z</published>
+        <updated>2019-02-10T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>The main purpose of this release is to fix a bug in 2.14 that
+		prevented Newsboat from updating The Old Reader feeds. The
+		rest of 2.14.1 are less critical bug fixes, and a couple of new
+		features.</p>
+            <p>Download it from our site: <a
+                href="https://newsboat.org/releases/2.14.1/newsboat-2.14.1.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.14.1/newsboat-2.14.1.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.14.1/docs/newsboat.html">the
+		docs</a>, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2141---2019-02-10">the
+                changelog is on GitHub</a>.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.14 is out</title>
+        <link href="https://newsboat.org/releases/2.14/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.14/docs/newsboat.html</id>
+        <published>2018-12-29T20:00:00Z</published>
+        <updated>2018-12-29T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>For users, this should be “yet another release”: we fixed a few
+                bugs, added a few new settings, and that’s about it.</p>
+            <p>For package maintainers, this is an exceptional release because
+                it adds a new dependency—Rust. As was mentioned in earlier
+                release notes, please contact us via <a
+                href="https://github.com/newsboat/newsboat/issues">our issue
+                tracker</a>, <a
+                href="http://groups.google.com/group/newsboat">mailing list</a>
+                (newsboat@googlegroups.com), or IRC channel (#newsboat on
+                Freenode) if you run into <i>any</i> problems with building
+                and/or packaging Newsboat. We’d like to fix as many of those
+                problems as possible upstream, and just help you out if you’re
+                new to Rust.</p>
+            <p>As always, <a
+                href="https://newsboat.org/releases/2.14/newsboat-2.14.tar.xz">the
+                tarball</a>, <a
+                href="https://newsboat.org/releases/2.14/newsboat-2.14.tar.xz.asc">its
+                signature</a>, and <a
+                href="https://newsboat.org/releases/2.14/docs/newsboat.html">all
+                the docs</a> can be found on our server, and <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#214---2018-12-29">the
+                changelog is on GitHub</a>.</p>
+            <p>Happy newsreading, everyone, and a happy New Year!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.13 is out</title>
+        <link href="https://newsboat.org/releases/2.13/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.13/docs/newsboat.html</id>
+        <published>2018-09-22T20:00:00Z</published>
+        <updated>2018-09-22T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>The 2.13 release is special in two ways.</p>
+
+            <p>First of all, it marks an anniversary: exactly a year ago, we
+            forked from Newsbeuter to bring the program back into shape. We
+            partially succeeded: many bugs were fixed, a number of rough
+            corners were smoothed, and the atmosphere around the project
+            improved noticeably.</p>
+
+            <p>Second, this release is going to be the last purely-C++ one. As
+            I explain in <a
+            href="https://github.com/newsboat/newsboat/issues/89">#89</a>,
+            I believe that C++ is a death by a thousand cuts for this project.
+            This discourages me from working on it. It’s as much a personal
+            problem as it is technical one, and I’m absolutely <i>not</i> sure
+            that I’m doing the right thing, but: I’m rewriting Newsboat in
+            Rust.</p>
+
+            <p>In the short term, this means we will be introducing bugs
+            instead of fixing them, and features will be much harder to add
+            while we’re moving. Please bear with us!</p>
+
+            <p>Package maintainers will have to spend time figuring out how to
+            package Newsboat now. I’m sorry about that. If you’re a maintainer,
+            and you run into <i>any</i> problems, please get in touch via <a
+            href="https://github.com/newsboat/newsboat/issues">the issue
+            tracker</a>, <a
+            href="http://groups.google.com/group/newsboat">mailing list</a>
+            (newsboat@googlegroups.com), or IRC (#newsboat on Freenode). I want
+            to fix or forestall any problems upstream, so you don’t have to
+            suffer as much.</p>
+
+            <p>Despite all this, I believe that long-term benefits outweigh any
+            temporary discomfort. A rewrite should straighten out a few of the
+            nastier corners of the codebase, and put us in a better position to
+            actually evolve the project.</p>
+
+            <p>If you’re interested in helping out, please <a
+            href="https://github.com/newsboat/newsboat">watch the project on
+            GitHub</a>; soon, I will be opening issues about components that
+            can be rewritten. I can provide guidance around our codebase, plus
+            some general mentoring (I’m not ready to teach Rust, since I’m
+            still learning it myself, but I’ll share what I know). In short, if
+            you know a bit of Rust and can read C++, you’re qualified; please
+            come!</p>
+
+            <p>In the meantime, you’ll probably need a feed reader; you can get
+            one here: <a
+            href="https://newsboat.org/releases/2.13/newsboat-2.13.tar.xz">the
+            tarball</a>, <a
+            href="https://newsboat.org/releases/2.13/newsboat-2.13.tar.xz.asc">its
+            signature</a>, and <a
+            href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#213---2018-09-22">the
+            changelog for 2.13 release</a>.</p>
+
+            <p>Thank you for using Newsboat, and happy newsreading!<br/>— Alex</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.12 is out</title>
+        <link href="https://newsboat.org/releases/2.12/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.12/docs/newsboat.html</id>
+        <published>2018-06-24T20:00:00Z</published>
+        <updated>2018-06-24T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Please welcome Newsboat 2.12! The bulk of the release is
+                bugfixes, mostly contributed by you guys—thank you! There are
+                also a few little nice features, so do peruse <a
+                href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#212---2018-06-24">the
+                changelog</a>.</p>
+            <p>As always, you can find <a
+                    href="https://newsboat.org/releases/2.12/newsboat-2.12.tar.xz">
+                    the tarball</a> and <a
+                    href="https://newsboat.org/releases/2.12/newsboat-2.12.tar.xz.asc">
+                    its signature</a>
+                on our server.</p>
+            <p>Happy newsreading, everyone!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Hotfix: Newsboat 2.11.1 fixes --version</title>
+        <link href="https://newsboat.org/releases/2.11.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.11.1/docs/newsboat.html</id>
+        <published>2018-03-30T19:05:00Z</published>
+        <updated>2018-03-03T19:05:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>The tarball for 2.11 contained an error that made
+                <code>newsboat --version</code> report a wrong version number.
+                This has been spotted by a few users and packagers, and is now
+                fixed.</p>
+            <p>Other than that, 2.11.1 contains no functional changes.
+                <a
+                href="https://newsboat.org/releases/2.11.1/newsboat-2.11.1.tar.xz">The tarball</a>
+                and <a
+                href="https://newsboat.org/releases/2.11.1/newsboat-2.11.1.tar.xz.asc">its signature</a>
+                are in their usual places.
+                </p>
+            <p>Once again, sorry about all the noise and
+                messups,<br/>&mdash;Alex.</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.11 is out</title>
+        <link href="https://newsboat.org/releases/2.11/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.11/docs/newsboat.html</id>
+        <published>2018-03-25T20:00:00Z</published>
+        <updated>2018-03-25T20:20:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>The new release is on the dot! Three-month cadence works great
+                so far, so I plan to stick to it.</p>
+            <p>This release contains <i>less</i> new stuff than the previous
+                one, but I still decided to bump the minor version because we
+                have new features. Should’ve done this with 2.10.2 too, but oh
+                well—what’s done is done.</p>
+            <p>As usual, <a
+                    href="https://newsboat.org/releases/2.11/newsboat-2.11.tar.xz">
+                    the tarball</a> and <a
+                    href="https://newsboat.org/releases/2.11/newsboat-2.11.tar.xz.asc">
+                    its signature</a>
+                can be found on our server, and
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#211---2018-03-25">
+                the full changelog</a> is on GitHub.</p>
+            <p>Happy newsreading!</p>
+            <p><b>Addendum</b>: I messed up during the release process and
+                pushed a Git tag pointing to an earlier version. If you updated
+                your Newsboat clone in the last 30 minutes, please do the
+                following:
+<pre>
+$ git tag --delete r2.11
+$ git fetch origin tag r2.11
+$ git rev-parse r2.11
+</pre>
+            </p>
+                     
+            <p>That last command should return
+                971fe6a596d871073ff34c42854e2c9f50e683ba. Sorry about the
+                noise, folks!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.10.2 is out</title>
+        <link href="https://newsboat.org/releases/2.10.2/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.10.2/docs/newsboat.html</id>
+        <published>2017-12-25T19:00:00Z</published>
+        <updated>2017-12-25T19:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Mere three months after our previous release, I present to you
+                Newsboat 2.10.2! As you can tell, this is a minor release,
+                but it still includes nice things like support for Inoreader,
+                correct wrapping for CJK languages, and a translation to Slovak.</p>
+            <p>As usual, <a
+                    href="https://newsboat.org/releases/2.10.2/newsboat-2.10.2.tar.xz">
+                    the tarball</a> and <a
+                    href="https://newsboat.org/releases/2.10.2/newsboat-2.10.2.tar.xz.asc">
+                    its signature</a>
+                can be found on our server, and
+                <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2102---2017-12-25">
+                the full changelog</a> is on GitHub.</p>
+            <p>Merry Christmas and happy New Year!</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Hotfix: Newsboat 2.10.1 fixes XDG and documents migration process</title>
+        <link href="https://newsboat.org/releases/2.10.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.10.1/docs/newsboat.html</id>
+        <published>2017-09-22T21:00:00Z</published>
+        <updated>2017-09-22T21:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>As Russian saying goes, “the first pancake is always lumpy”.
+                Newsboat 2.10 was released rather hastily and was just a tad
+                undertested and underbaked. Newsboat 2.10.1 amends this by:
+                <ul><li>documentating automatic migration that was added in
+                    2.10; and</li>
+                <li>fixing a bug where <code>$XDG_DATA_DIR/newsboat</code>
+                    wasn’t created for first-time users, resulting in cache
+                    lock failure.</li></ul></p>
+            <p>Please grab <a
+                    href="https://newsboat.org/releases/2.10.1/newsboat-2.10.1.tar.xz">the
+                    tarball</a> (<a
+                    href="https://newsboat.org/releases/2.10.1/newsboat-2.10.1.tar.xz.asc">signature</a>)
+                and tell us what you think!</p>
+            <p>With my best regards,<br/>—Alex</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.10 is out</title>
+        <link href="https://newsboat.org/releases/2.10/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.10/docs/newsboat.html</id>
+        <published>2017-09-20T20:00:00Z</published>
+        <updated>2017-09-20T20:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Yay, our first release is out! We’re continuing the Newsbeuter
+                numbering, so this one is called 2.10. Grab <a
+                    href="https://newsboat.org/releases/2.10/newsboat-2.10.tar.xz">the
+                    tarball</a> while it’s hot (and don’t forget to verify <a
+                    href="https://newsboat.org/releases/2.10/newsboat-2.10.tar.xz.asc">its
+                    signature</a>.)</p>
+            <p>Nikos Tsipinakis prodded me into implementing automatic
+                migration of Newsbeuter configuration, so if you don’t have
+                <code>include</code>s or scripts stored in your Newsbeuter
+                directory, switching should be hassle-free for you. If any
+                problems <i>do</i> come up, don’t hesitate to contact us via
+                IRC, mailing list or issue tracker.</p>
+            <p>Happy newsreading everyone,<br/>Alex</p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Thanks for subscribing!</title>
+        <link href="https://newsboat.org/index.html" />
+        <id>https://newsboat.org/index.html</id>
+        <published>2017-09-17T00:00:00Z</published>
+        <updated>2017-09-17T00:00:00Z</updated>
+        <summary type="html"><![CDATA[
+            <p>Thanks for subscribing to our newsfeed! If you’re using
+               Newsbeuter, consider switching to Newsboat right away&mdash;the
+               upgrade is simple enough:
+               <ul>
+                   <li>move everything from ~/.newsbeuter/ to ~/.newsboat/</li>
+                   <li>move everything from ~/.config/newsbeuter/ to ~/.config/newsboat/</li>
+                   <li>move everything from ~/.local/share/newsbeuter/ to ~/.local/share/newsboat/</li>
+              </ul>
+              If Newsbeuter directories don’t exist, just skip that step and go to the next.</p>
+          <p>If you’ve got any questions, write to us via
+                <a href="https://groups.google.com/forum/#!forum/newsboat">mailing
+                list</a>, <a href="https://github.com/newsboat/newsboat/issues">GitHub
+                issue tracker</a>, or on IRC (#newsboat on Freenode;
+            <a href="https://webchat.freenode.net/?channels=newsboat">webchat</a>).</p>
+        ]]></summary>
+    </entry>
+</feed>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Newsboat, an RSS reader</title>
+        <link rel="canonical" href="https://newsboat.org/index.html">
+        <link rel="alternate" type="application/atom+xml" title="Newsboat" href="./news.atom">
+        <link rel="stylesheet" type="text/css" media="all" href="./normalize.css">
+
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="&nbsp;"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
+        <style>
+        html {
+            font-size: 20px;
+            font-family: serif;
+            text-rendering: optimizeLegibility;
+            background-color: #dddddd;
+        }
+
+        header {
+            background-color: #3465a4;
+        }
+
+        div#title, article {
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+
+        div#title {
+            padding: 0.1rem 0;
+        }
+
+        div#title > h1 {
+            display: inline;
+            vertical-align: middle;
+            padding-left: 0.5rem;
+            color: white;
+        }
+
+        div#title > img {
+            vertical-align: middle;
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            padding-top: 1.62rem;;
+            text-align: center;
+            font-size: calc(1.62rem / 2);
+        }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div id="title">
+                <img style="height: 3.14rem;" src="logo.svg" alt="Logo" />
+                <h1>Newsboat</h1>
+            </div>
+        </header>
+        <article>
+            <p>Newsboat is an RSS/Atom feed reader for the text console.
+                It&rsquo;s an actively maintained fork of Newsbeuter.</p>
+            <p style="text-align: center;">
+               <img src="./images/2.25-screenshot_2x-33f26153.png"
+                    srcset="./images/2.25-screenshot_1x-33f26153.png 1x,
+                            ./images/2.25-screenshot_2x-33f26153.png 2x"
+                    alt="Viewing an article in Newsboat"
+                    style="max-width: 90%;" /></p>
+            <p>The current version is 2.39, released on 23rd of March 2025:</p>
+            <ul>
+                <li><a href="./releases/2.39/newsboat-2.39.tar.xz">source tarball</a>
+                    (<a href="./releases/2.39/newsboat-2.39.tar.xz.asc">signature</a>)</li>
+                <li><a href="./releases/2.39/docs/newsboat.html">documentation</a> and
+                    <a href="./releases/2.39/docs/faq.html">FAQ</a></li>
+                <li><a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#239---2025-03-23">changelog entry</a></li>
+            </ul>
+
+            <p>Our OpenPGP key, 4ED6CD61932B9EBE, can be downloaded from
+               <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/B8B1756A0DDBF0760CE67CCF4ED6CD61932B9EBE">
+               keys.openpgp.org</a> or <a href="./newsboat.pgp">directly from us</a>. The
+               fingerprint is B8B1 756A 0DDB F076 0CE6  7CCF 4ED6 CD61 932B 9EBE.</p>
+            <p>To receive updates on new releases and whatnot, please subscribe
+               to <a href="./news.atom">the news feed</a>. You can also find us
+               on:</p>
+            <ul>
+               <li>GitHub, where we host <a
+                   href="https://github.com/newsboat/newsboat">the repo</a>
+                   and <a
+                   href="https://github.com/newsboat/newsboat/issues">the
+                   issue tracker</a></li>
+               <li>Google Groups, where we keep <a
+                   href="https://groups.google.com/forum/#!forum/newsboat">our
+                   mailing list</a> (<a
+                   href="mailto:newsboat@googlegroups.com">newsboat@googlegroups.com</a>)</li>
+               <li><a href="https://libera.chat">irc.libera.chat</a>, where we
+	           hang out on #newsboat; you can
+		   <a href="https://web.libera.chat">connect via a webchat</a>.
+		   We <em>do not</em> have a channel on Freenode anymore</li>
+            </ul>
+
+            <p>If you have found a security vulnerability, please email <a
+            href="mailto:security@newsboat.org">security@newsboat.org</a>, and
+            use the aforementioned OpenPGP key if at all possible.</p>
+
+            <p>Previous releases:<p>
+
+            <ul>
+                <li>2.38, on 22nd of December 2024
+                    (<a href="./releases/2.38/newsboat-2.38.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.38/newsboat-2.38.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.38/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.38/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#238---2024-12-22">changelog</a>);
+                </li>
+                <li>on 22nd of September 2024
+                    <ul>
+                        <li>2.37
+                            (<a href="./releases/2.37/newsboat-2.37.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.37/newsboat-2.37.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.37/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.37/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#237---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.36.1
+                            (<a href="./releases/2.36.1/newsboat-2.36.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.36.1/newsboat-2.36.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.36.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.36.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2361---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.35.1
+                            (<a href="./releases/2.35.1/newsboat-2.35.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.35.1/newsboat-2.35.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.35.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.35.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2351---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.34.1
+                            (<a href="./releases/2.34.1/newsboat-2.34.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.34.1/newsboat-2.34.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.34.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.34.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2341---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.33.1
+                            (<a href="./releases/2.33.1/newsboat-2.33.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.33.1/newsboat-2.33.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.33.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.33.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2331---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.32.1
+                            (<a href="./releases/2.32.1/newsboat-2.32.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.32.1/newsboat-2.32.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.32.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.32.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2321---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.31.1
+                            (<a href="./releases/2.31.1/newsboat-2.31.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.31.1/newsboat-2.31.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.31.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.31.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2311---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.30.2
+                            (<a href="./releases/2.30.2/newsboat-2.30.2.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.30.2/newsboat-2.30.2.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.30.2/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.30.2/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2302---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.29.1
+                            (<a href="./releases/2.29.1/newsboat-2.29.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.29.1/newsboat-2.29.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.29.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.29.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2291---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.28.1
+                            (<a href="./releases/2.28.1/newsboat-2.28.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.28.1/newsboat-2.28.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.28.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.28.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2281---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.27.1
+                            (<a href="./releases/2.27.1/newsboat-2.27.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.27.1/newsboat-2.27.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.27.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.27.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2271---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.26.1
+                            (<a href="./releases/2.26.1/newsboat-2.26.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.26.1/newsboat-2.26.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.26.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.26.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2261---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.25.1
+                            (<a href="./releases/2.25.1/newsboat-2.25.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.25.1/newsboat-2.25.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.25.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.25.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2251---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.24.1
+                            (<a href="./releases/2.24.1/newsboat-2.24.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.24.1/newsboat-2.24.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.24.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.24.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2241---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.23.1
+                            (<a href="./releases/2.23.1/newsboat-2.23.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.23.1/newsboat-2.23.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.23.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.23.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2231---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.22.2
+                            (<a href="./releases/2.22.2/newsboat-2.22.2.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.22.2/newsboat-2.22.2.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.22.2/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.22.2/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2222---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.21.1
+                            (<a href="./releases/2.21.1/newsboat-2.21.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.21.1/newsboat-2.21.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.21.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.21.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2211---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.20.2
+                            (<a href="./releases/2.20.2/newsboat-2.20.2.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.20.2/newsboat-2.20.2.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.20.2/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.20.2/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2202---2024-09-22">changelog</a>);
+                        </li>
+                        <li>2.19.1
+                            (<a href="./releases/2.19.1/newsboat-2.19.1.tar.xz">tar.xz</a>,
+                            <a href="./releases/2.19.1/newsboat-2.19.1.tar.xz.asc">asc</a>,
+                            <a href="./releases/2.19.1/docs/newsboat.html">docs</a>,
+                            <a href="./releases/2.19.1/docs/faq.html">FAQ</a>,
+                            <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2191---2024-09-22">changelog</a>);
+                        </li>
+                    </ul>
+                </li>
+                <li>2.36, on 22nd of June 2024
+                    (<a href="./releases/2.36/newsboat-2.36.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.36/newsboat-2.36.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.36/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.36/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#236---2024-06-22">changelog</a>);
+                </li>
+                <li>2.35, on 24th of March 2024
+                    (<a href="./releases/2.35/newsboat-2.35.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.35/newsboat-2.35.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.35/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.35/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#235---2024-03-24">changelog</a>);
+                </li>
+                <li>2.34, on 25th of December 2023
+                    (<a href="./releases/2.34/newsboat-2.34.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.34/newsboat-2.34.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.34/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.34/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#234---2023-12-25">changelog</a>);
+                </li>
+                <li>2.33, on 24th of September 2023
+                    (<a href="./releases/2.33/newsboat-2.33.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.33/newsboat-2.33.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.33/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.33/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#233---2023-09-24">changelog</a>);
+                </li>
+                <li>2.32, on 25th of June 2023
+                    (<a href="./releases/2.32/newsboat-2.32.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.32/newsboat-2.32.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.32/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.32/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#232---2023-06-25">changelog</a>);
+                </li>
+                <li>2.31, on 26th of March 2023
+                    (<a href="./releases/2.31/newsboat-2.31.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.31/newsboat-2.31.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.31/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.31/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#231---2023-03-26">changelog</a>);
+                </li>
+                <li>2.30.1, on 30th of December 2022
+                    (<a href="./releases/2.30.1/newsboat-2.30.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.30.1/newsboat-2.30.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.30.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.30.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2301---2022-12-30">changelog</a>);
+                </li>
+                <li>2.30, on 25th of December 2022
+                    (<a href="./releases/2.30/newsboat-2.30.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.30/newsboat-2.30.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.30/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.30/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#230---2022-12-25">changelog</a>);
+                </li>
+                <li>2.29, on 25th of September 2022
+                    (<a href="./releases/2.29/newsboat-2.29.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.29/newsboat-2.29.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.29/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.29/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#229---2022-09-25">changelog</a>);
+                </li>
+                <li>2.28, on 26th of June 2022
+                    (<a href="./releases/2.28/newsboat-2.28.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.28/newsboat-2.28.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.28/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.28/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#228---2022-06-26">changelog</a>);
+                </li>
+                <li>2.27, on 22nd of March 2022
+                    (<a href="./releases/2.27/newsboat-2.27.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.27/newsboat-2.27.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.27/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.27/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#227---2022-03-22">changelog</a>);
+                </li>
+                <li>2.26, on 27th of December 2021
+                    (<a href="./releases/2.26/newsboat-2.26.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.26/newsboat-2.26.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.26/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.26/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#226---2021-12-27">changelog</a>);
+                </li>
+                <li>2.25, on 20th of September 2021
+                    (<a href="./releases/2.25/newsboat-2.25.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.25/newsboat-2.25.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.25/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.25/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#225---2021-09-20">changelog</a>);
+                </li>
+                <li>2.24, on 20th of June 2021
+                    (<a href="./releases/2.24/newsboat-2.24.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.24/newsboat-2.24.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.24/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.24/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#224---2021-06-20">changelog</a>);
+                </li>
+                <li>2.23, on 21st of March 2021
+                    (<a href="./releases/2.23/newsboat-2.23.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.23/newsboat-2.23.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.23/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.23/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#223---2021-03-21">changelog</a>);
+                </li>
+                <li>2.22.1, on 10th of January 2021
+                    (<a href="./releases/2.22.1/newsboat-2.22.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.22.1/newsboat-2.22.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.22.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.22.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2221---2021-01-10">changelog</a>);
+                </li>
+                <li>2.22, on 21st of December 2020
+                    (<a href="./releases/2.22/newsboat-2.22.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.22/newsboat-2.22.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.22/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.22/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#222---2020-12-21">changelog</a>);
+                </li>
+                <li>2.21, on 20th of September 2020
+                    (<a href="./releases/2.21/newsboat-2.21.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.21/newsboat-2.21.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.21/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.21/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#221---2020-09-20">changelog</a>);
+                </li>
+                <li>2.20.1, on 24th of June 2020
+                    (<a href="./releases/2.20.1/newsboat-2.20.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.20.1/newsboat-2.20.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.20.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.20.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2201---2020-06-24">changelog</a>);
+                </li>
+                <li>2.20, on 20th of June 2020
+                    (<a href="./releases/2.20/newsboat-2.20.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.20/newsboat-2.20.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.20/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.20/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#220---2020-06-20">changelog</a>);
+                </li>
+                <li>2.19, on 22nd of March 2020
+                    (<a href="./releases/2.19/newsboat-2.19.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.19/newsboat-2.19.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.19/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.19/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#219---2020-03-22">changelog</a>);
+                </li>
+                <li>2.18, on 22nd of December 2019
+                    (<a href="./releases/2.18/newsboat-2.18.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.18/newsboat-2.18.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.18/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.18/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#218---2019-12-22">changelog</a>);
+                </li>
+                <li>2.17.1, on 2nd of October 2019
+                    (<a href="./releases/2.17.1/newsboat-2.17.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.17.1/newsboat-2.17.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.17.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.17.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2171---2019-10-22">changelog</a>);
+                </li>
+                <li>2.17, on 22nd of September 2019
+                    (<a href="./releases/2.17/newsboat-2.17.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.17/newsboat-2.17.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.17/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.17/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#217---2019-09-22">changelog</a>);
+                </li>
+                <li>2.16.1, on 26th of June 2019
+                    (<a href="./releases/2.16.1/newsboat-2.16.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.16.1/newsboat-2.16.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.16.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.16.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2161---2019-06-26">changelog</a>);
+                </li>
+                <li>2.16, on 25th of June 2019
+                    (<a href="./releases/2.16/newsboat-2.16.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.16/newsboat-2.16.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.16/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.16/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#216---2019-06-25">changelog</a>);
+                </li>
+                <li>2.15, on 23rd of March 2019
+                    (<a href="./releases/2.15/newsboat-2.15.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.15/newsboat-2.15.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.15/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.15/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#215---2019-03-23">changelog</a>);
+                </li>
+                <li>2.14.1, on 10th of February 2019
+                    (<a href="./releases/2.14.1/newsboat-2.14.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.14.1/newsboat-2.14.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.14.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.14.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2141---2019-02-10">changelog</a>);
+                </li>
+                <li>2.14, on 29th of December 2018
+                    (<a href="./releases/2.14/newsboat-2.14.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.14/newsboat-2.14.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.14/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.14/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#214---2018-12-29">changelog</a>);
+                </li>
+                <li>2.13, on 22nd of September 2018
+                    (<a href="./releases/2.13/newsboat-2.13.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.13/newsboat-2.13.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.13/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.13/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#213---2018-09-22">changelog</a>);
+                </li>
+                <li>2.12, on 24th of June 2018
+                    (<a href="./releases/2.12/newsboat-2.12.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.12/newsboat-2.12.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.12/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.12/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#212---2018-06-24">changelog</a>);
+                </li>
+                <li>2.11.1, on 30th of March 2018
+                    (<a href="./releases/2.11.1/newsboat-2.11.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.11.1/newsboat-2.11.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.11.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.11.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2111---2018-03-30">changelog</a>);
+                </li>
+                <li>2.11, on 25th of March 2018
+                    (<a href="./releases/2.11/newsboat-2.11.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.11/newsboat-2.11.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.11/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.11/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#211---2018-03-25">changelog</a>);
+                </li>
+                <li>2.10.2, on 25th of December 2017
+                    (<a href="./releases/2.10.2/newsboat-2.10.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.10.2/newsboat-2.10.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.10.2/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.10.2/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2102---2017-12-25">changelog</a>);
+                </li>
+                <li>2.10.1, on 22nd of September 2017
+                    (<a href="./releases/2.10.1/newsboat-2.10.1.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.10.1/newsboat-2.10.1.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.10.1/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.10.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2101---2017-09-22">changelog</a>);
+                </li>
+                <li>2.10, on 20th of September 2017
+                    (<a href="./releases/2.10/newsboat-2.10.tar.xz">tar.xz</a>,
+                    <a href="./releases/2.10/newsboat-2.10.tar.xz.asc">asc</a>,
+                    <a href="./releases/2.10/docs/newsboat.html">docs</a>,
+                    <a href="./releases/2.10/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#210---2017-09-20">changelog</a>).
+                </li>
+            </ul>
+        </article>
+        <footer>
+            <p>Copyright 2017&ndash;2025 newsboat.org</p>
+        </footer>
+    </body>
+</html>
