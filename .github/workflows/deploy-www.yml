@@ -1,0 +1,15 @@
+name: Deploy the site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    run: |
+      mkdir .ssh
+      printf '%s\n' "${{secrets.DEPLOY_KEY}}" > ~/.ssh/deploy_key
+      printf "Host newsboat.org\n\tIdentityFile ~/.ssh/deploy_key\n\tUserKnownHostsFile=/dev/null\n\tStrictHostKeyChecking=no\n" > ~/.ssh/config
+      chmod -R u=rwX,go= ~/.ssh
+      ./deploy.sh
