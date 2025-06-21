@@ -8,7 +8,39 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2025-03-23T21:00:00Z</updated>
+    <updated>2025-06-21T20:30:00Z</updated>
+
+    <entry>
+        <title>Newsboat 2.40 is out</title>
+        <link href="https://newsboat.org/releases/2.40/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.40/docs/newsboat.html</id>
+        <updated>2025-06-21T20:30:00Z</updated>
+        <published>2025-06-21T20:30:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Please welcome the 30th minor release of Newsboat!
+            </p>
+
+            <p>
+                Packagers should take note that Newsboat no longer supports GCC
+                5 and 6. Other than that, this is your run-of-the-mill "updates
+                and improvements" kind of release, with nothing particular to
+                highlight.
+            </p>
+
+            <p>Without further ado, here are the links:
+                    <a href="https://newsboat.org/releases/2.40/newsboat-2.40.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.40/newsboat-2.40.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.40/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.40/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#240---2025-06-21">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Newsboat 2.39 is out</title>
