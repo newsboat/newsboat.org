@@ -8,7 +8,53 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2025-06-21T20:30:00Z</updated>
+    <updated>2025-09-21T20:30:00Z</updated>
+
+    <entry>
+        <title>Newsboat 2.41 is out</title>
+        <link href="https://newsboat.org/releases/2.41/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.41/docs/newsboat.html</id>
+        <updated>2025-09-21T20:30:00Z</updated>
+        <published>2025-09-21T20:30:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                According to the changelog, this is yet another small bugfix-ish
+                release. Nothing major. I’d certainly like for it to appear
+                so :)
+            </p>
+
+            <p>
+                Under the hood though, there’s the biggest refactor we did to
+                date. When we started porting Newsboat to Rust, some of you ran
+                into a bug where the program couldn’t read the cache file due to
+                some "non-UTF-8" data in it. The core of the issue is that
+                not enough care was given to separate strings in different
+                encodings. Rust exposed those problems because it’s way more
+                strict about string encodings. With 2.41, we make the first step
+                towards resolving those problems, by separating filesystem paths
+                and other strings.
+            </p>
+
+            <p>
+                In parallel to that, there is work ongoing to improve Newsboat’s
+                ability to convert all incoming articles to UTF-8. This helps
+                with some feeds today, but most importantly, it prepares us for
+                the future when all text in Newsboat would be encoded in UTF-8.
+            </p>
+
+            <p>Please check out the links below, and don't hesitate to open issues if there’s something amiss:
+                    <a href="https://newsboat.org/releases/2.41/newsboat-2.41.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.41/newsboat-2.41.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.41/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.41/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#241---2025-09-21">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Newsboat 2.40 is out</title>
