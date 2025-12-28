@@ -8,7 +8,51 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2025-09-21T20:30:00Z</updated>
+    <updated>2025-12-28T11:00:00Z</updated>
+
+    <entry>
+        <title>Newsboat 2.42 is out</title>
+        <link href="https://newsboat.org/releases/2.42/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.42/docs/newsboat.html</id>
+        <updated>2025-12-28T11:00:00Z</updated>
+        <published>2025-12-28T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>With apologies for the delay, I’m happy to present you Newsboat 2.42!</p>
+
+            <p>
+                We’ve lost momentum this time around. I (Alexander Batischev)
+                hasn’t contributed meaningfully for quite some time; Dennis
+                van der Schagt, who carried the bulk of the development, had
+                a bit of time off Newsboat, and it shows in the size of the
+                CHANGELOG. Some of the work was picked up by Forketyfork and
+                Juho Eerola, both of whom already contributed to Newsboat in the
+                past. Development is certainly in a bit of a lull, but I’d say
+                it’s nowhere near stopping.
+            </p>
+
+            <p>
+                There is no shiny new features or big highlights this time,
+                just a couple bug fixes and a bit of polish here and there.
+                Should be a seamless upgrade, perfect for the snowy holidays ☺
+            </p>
+
+            <p>All the files are where you’d expect them:
+                    <a href="https://newsboat.org/releases/2.42/newsboat-2.42.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.42/newsboat-2.42.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.42/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.42/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#242---2025-12-28">changelog</a>.
+            </p>
+
+            <p>
+                Merry Christmas to you all, and a Happy New Year!
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Newsboat 2.41 is out</title>
