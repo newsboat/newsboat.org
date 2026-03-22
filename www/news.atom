@@ -8,7 +8,61 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2025-12-28T11:00:00Z</updated>
+    <updated>2026-03-22T16:00:00Z</updated>
+
+    <entry>
+        <title>Newsboat 2.43 is out</title>
+        <link href="https://newsboat.org/releases/2.43/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.43/docs/newsboat.html</id>
+        <updated>2026-03-22T16:00:00Z</updated>
+        <published>2026-03-22T16:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Just like the last time, there‘s not much to say about this
+                release. As usual, there is quite a lot of refactorings and code
+                improvements by Dennis van der Schagt, plus a handful of bug
+                fixes and even one little new feature: a
+                <code>miniflux-flag-save</code> setting
+                to trigger article saving machinery in Miniflux.
+            </p>
+
+            <p>
+                There are things to say about the process, though, specifically
+                GitHub. It‘s hard for me to quantify, but I‘d wager that
+                we benefited from using GitHub in a number of ways. However, the
+                nature of the platform is changing. When I joined in 2009, it
+                was a cool place to be; now it‘s <em>the</em> place to be,
+                which is a fairly different vibe. Cool people were already
+                trickling away years ago, and their list now includes a
+                long-time contributor to our docs and various other non-code
+                efforts.
+            </p>
+
+            <p>
+                Thus: if you are not comfortable using GitHub, I‘ll take your
+                patches and Git pull requests (<code>git request-pull</code>
+                thingy) over email and IRC. This increases my workload, but it
+                also lets me know how many non-GitHub developers are interested
+                in Newsboat.
+            </p>
+
+            <p>Well, enough navel-gazing. Go compile yourself a Newsboat and find something more interesting to read :) Here‘s the
+                    <a href="https://newsboat.org/releases/2.43/newsboat-2.43.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.43/newsboat-2.43.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.43/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.43/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#243---2026-03-22">changelog</a>.
+            </p>
+
+            <p>
+                Joyful newsreading!
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Newsboat 2.42 is out</title>
