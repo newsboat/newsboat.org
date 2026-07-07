@@ -8,7 +8,38 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2026-06-21T11:00:00Z</updated>
+    <updated>2026-07-07T16:15:00Z</updated>
+
+    <entry>
+        <title>Snaps for Newsboat 2.44 are out</title>
+        <link href="https://newsboat.org/releases/2.44/docs/newsboat.html#snaps" />
+        <id>https://newsboat.org/releases/2.44/docs/newsboat.html#snaps</id>
+        <updated>2026-07-07T16:15:00Z</updated>
+        <published>2026-07-07T16:15:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                Hello everyone,
+            </p>
+
+            <p>
+                Usually we release Newsboat on Snap Store at the same time as
+                the release is published elsewhere, but this time around this
+                didn't happen. As it turned out, the builds were failing for a
+                few weeks, but we weren't notified. This is now fixed, and snaps
+                have just been pushed to the store. Due to the required fixes,
+                snaps have a slightly odd version string
+                ("r2.44+git14.93bfeec5"); do not be alarmed, that's fine.
+            </p>
+
+            <p>
+                Thank you for the patience and for using Newsboat!
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Newsboat 2.44 is out</title>
