@@ -126,7 +126,7 @@
         ]]></title>
         <link href="https://newsboat.org/index.html" />
         <id>https://newsboat.org/index.html#20261004-rce-opml</id>
-        <updated>2026-10-04T11:00:00Z</updated>
+        <updated>2026-10-04T11:15:00Z</updated>
         <published>2026-10-04T11:00:00Z</published>
         <author>
             <name>Alexander Batischev</name>
@@ -154,7 +154,7 @@
             <h1>Workarounds</h1>
 
             <p>
-                When importing OPML with <code>--import-from-opml</p>, the user
+                When importing OPML with <code>--import-from-opml</code>, the user
                 has a chance of checking the OPML file to ensure
                 it doesn't contain anything nefarious. After import,
                 it's possible to examine Newsboat's urls file for the same.
