@@ -8,7 +8,200 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2026-07-07T16:15:00Z</updated>
+    <updated>2026-10-04T11:00:00Z</updated>
+
+    <entry>
+        <title>GHSA-pvg7-gjxf-23c9: Podboat could write at arbitrary paths</title>
+        <link href="https://newsboat.org/index.html" />
+        <id>https://newsboat.org/index.html#20261004-GHSA-pvg7-gjxf-23c9</id>
+        <updated>2026-10-04T11:00:00Z</updated>
+        <published>2026-10-04T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>CVE ID pending.</p>
+
+            <h1>Impact</h1>
+
+            <p>
+                Newsboat's rudimentary support for podcasts writes podcast
+                URL and filename into a text file called "queue". The queue
+                is then consumed by Podboat, which downloads provided URLs
+                and writes under provided filenames. A specially crafted
+                RSS/Atom feed could include newline and tab characters into
+                the podcast URL, affecting how Podboat parses the queue,
+                tricking it into downloading other URLs and writing them at
+                arbitrary paths.
+            </p>
+
+            <p>
+                Anyone who uses the podcast support is impacted.
+            </p>
+
+            <h1>Patches</h1>
+
+            <p>
+                All Newsboat versions prior to 2.45 are affected.
+            </p>
+
+            <h1>Workarounds</h1>
+
+            <p>
+                Users that have <code>podcast-auto-enqueue</code> enabled should either
+                switch to enqueuing podcasts manually, or ensure that
+                they're only subscribed to the feeds that won't try to
+                exploit this vulnerability.
+            </p>
+
+            <p>
+                Those who enqueue podcasts manually should pay close attention
+                to enqueue URLs shown in the Newsboat UI, and possibly
+                double-check that no surprising URLs or filenames are present in
+                the queue file.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>GHSA-4m8m-vj3m-hfxx: Remote code execution via OPML import</title>
+        <link href="https://newsboat.org/index.html" />
+        <id>https://newsboat.org/index.html#20261004-GHSA-4m8m-vj3m-hfxx</id>
+        <updated>2026-10-04T11:00:00Z</updated>
+        <published>2026-10-04T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>CVE ID pending.</p>
+
+            <h1>Impact</h1>
+
+            <p>
+                It was discovered that when importing an OPML document,
+                Newsboat does not properly sanitize the URLs. This enables
+                the producer of OPML document to specify
+                <code>exec:</code> and <code>filter:</code>
+                URLs, which are treated specially by Newsboat and make it
+                execute provided commands on the user's machine.
+            </p>
+
+            <p>
+                Both the manual (<code>--import-from-opml</code> CLI option) and the
+                automatic (<code>opml-url</code> config setting) import methods
+                are affected.
+            </p>
+
+            <h1>Patches</h1>
+
+            <p>
+                All Newsboat versions prior to 2.45 are affected.
+            </p>
+
+            <h1>Workarounds</h1>
+
+            <p>
+                In case of manual import (<code>--import-from-opml</code> CLI option),
+                users are advised to examine the OPML document beforehand and ensure
+                it doesn't contain URLs that start with <code>exec:</code>
+                or <code>filter:</code>.
+            </p>
+
+            <p>
+                In case of automatic import (<code>opml-url</code> config setting), the
+                workaround is to remove <code>opml-url</code> from the config file, download
+                the OPML document, examine it as described above, then import it
+                manually. Once upgraded to a patched version of Newsboat, remove
+                the imported URLs from the urls file and add <code>opml-url</code> back to
+                the config file.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title type="html"><![CDATA[
+            (CVE ID pending) Remote code execution via manual OPML import (<code>--import-from-opml</code>)
+        ]]></title>
+        <link href="https://newsboat.org/index.html" />
+        <id>https://newsboat.org/index.html#20261004-rce-opml</id>
+        <updated>2026-10-04T11:00:00Z</updated>
+        <published>2026-10-04T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>CVE ID pending.</p>
+
+            <h1>Impact</h1>
+
+            <p>
+                Newsboat supports Liferea-style pipe and filter attributes in
+                OPML. These attributes contain shell commands which are executed
+                on the user's machine. Newsboat doesn't neutralise these shell
+                commands, nor does it warn the user of the potential danger. The
+                commands are executed at every feed reload.
+            </p>
+
+            <h1>Patches</h1>
+
+            <p>
+                All Newsboat versions prior to 2.45 are affected.
+            </p>
+
+            <h1>Workarounds</h1>
+
+            <p>
+                When importing OPML with <code>--import-from-opml</p>, the user
+                has a chance of checking the OPML file to ensure
+                it doesn't contain anything nefarious. After import,
+                it's possible to examine Newsboat's urls file for the same.
+                Users are advised to check the contents of urls file for
+                <code>exec:</code> and <code>filter:</code> commands
+                they didn't intend to run.
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.45 is out</title>
+        <link href="https://newsboat.org/releases/2.45/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.45/docs/newsboat.html</id>
+        <updated>2026-10-04T11:00:00Z</updated>
+        <published>2026-10-04T11:00:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                The release is a week late because we were dealing with a few
+                vulnerabilities. They were publicly disclosed via GitHub pull
+                requests, along with proposed fixes, and it took some time to
+                mould them into complete solutions. There will be separate news
+                items for each vulnerability. If you're using OPML import or
+                Podboat, it'd be wise to upgrade as fast as possible.
+            </p>
+
+            <p>
+                Apart from that, we also got a new Podboat operation (<code>pb-reload</code>),
+                new setting (<code>keep-forever-if-flagged-with</code>), and
+                a few new highlight groups to use in your colour schemes
+                (<code>listnormal_deleted</code> and <code>listfocus_deleted</code>).
+                Please see the changelog and the docs for details.
+            </p>
+
+            <p>As always, you can get everything from our site and GitHub:
+                    <a href="https://newsboat.org/releases/2.45/newsboat-2.45.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.45/newsboat-2.45.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.45/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.45/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#245---2026-10-04">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>Snaps for Newsboat 2.44 are out</title>
