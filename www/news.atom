@@ -8,13 +8,13 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2026-11-05T16:12:00Z</updated>
+    <updated>2026-11-05T16:19:00Z</updated>
 
     <entry>
         <title>GHSA-78q5-mpjq-5q34: Remote code execution via manual OPML import</title>
         <link href="https://newsboat.org/index.html" />
         <id>https://newsboat.org/index.html#20261105-GHSA-78q5-mpjq-5q34</id>
-        <updated>2026-11-05T16:02:00Z</updated>
+        <updated>2026-11-05T16:19:00Z</updated>
         <published>2026-11-05T16:02:00Z</published>
         <author>
             <name>Alexander Batischev</name>
@@ -51,7 +51,7 @@
 
             <p>
                 Users are advised to examine the OPML document beforehand and ensure
-                it doesn't contain XML entity &amp;10; (a newline).
+                it doesn't contain XML entity &amp;#10; (a newline).
             </p>
         ]]></summary>
     </entry>
