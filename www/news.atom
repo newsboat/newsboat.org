@@ -8,7 +8,90 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2026-10-04T11:00:00Z</updated>
+    <updated>2026-11-05T16:02:00Z</updated>
+
+    <entry>
+        <title>GHSA-78q5-mpjq-5q34: Remote code execution via manual OPML import</title>
+        <link href="https://newsboat.org/index.html" />
+        <id>https://newsboat.org/index.html#20261105-GHSA-78q5-mpjq-5q34</id>
+        <updated>2026-11-05T16:02:00Z</updated>
+        <published>2026-11-05T16:02:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>CVE ID pending.</p>
+
+            <h1>Impact</h1>
+
+            <p>
+                This is a more specific version of GHSA-4m8m-vj3m-hfxx:
+                the vulnerability is the same, but the attack vector is a bit more complex.
+            </p
+
+            <p>
+                When importing an OPML document, Newsboat doesn't sanitise
+                newlines in the data it reads. This data is then written into a
+                plain-text file (the urls file) which is then read back
+                line-by-line. Specially crafted OPML documents could utilise
+                this to add more lines to the urls file and inject
+                <code>exec:</code> and <code>filter:</code> special URLs
+                that contain shell commands to be executed when such URL
+                is reloaded.
+            </p>
+
+            <h1>Patches</h1>
+
+            <p>
+                All Newsboat versions prior to 2.45.1 are affected.
+            </p>
+
+            <h1>Workarounds</h1>
+
+            <p>
+                Users are advised to examine the OPML document beforehand and ensure
+                it doesn't contain XML entity &amp;10; (a newline).
+            </p>
+        ]]></summary>
+    </entry>
+
+    <entry>
+        <title>Newsboat 2.45.1 is out with security fixes</title>
+        <link href="https://newsboat.org/releases/2.45.1/docs/newsboat.html" />
+        <id>https://newsboat.org/releases/2.45.1/docs/newsboat.html</id>
+        <updated>2026-11-05T16:01:00Z</updated>
+        <published>2026-11-05T16:01:00Z</published>
+        <author>
+            <name>Alexander Batischev</name>
+            <email>eual.jp@gmail.com</email>
+        </author>
+        <summary type="html"><![CDATA[
+            <p>
+                This release fixes another way to achieve remote code execution
+                via OPML import. We already fixed the easy case in 2.45, but
+                ghozt found another one. Special thanks for disclosing it
+                privately and giving us ample time to fix it (lot longer than it
+                should've taken, but hey, volunteer projects and all that).
+            </p>
+
+            <p>
+                Given the deluge of security reports that other projects are getting,
+                it's possible that we'll change the policy so that only the most
+                serious vulnerabilities (remote code execution being one of them)
+                should be disclosed privately. The rest can be made public so more people
+                are able to help with reviewing and fixing them.
+            </p>
+
+            <p>If you're using manual OPML import, please update:
+                    <a href="https://newsboat.org/releases/2.45.1/newsboat-2.45.1.tar.xz">tar.xz</a>,
+                    <a href="https://newsboat.org/releases/2.45.1/newsboat-2.45.1.tar.xz.asc">asc</a>,
+                    <a href="https://newsboat.org/releases/2.45.1/docs/newsboat.html">docs</a>,
+                    <a href="https://newsboat.org/releases/2.45.1/docs/faq.html">FAQ</a>,
+                    <a href="https://github.com/newsboat/newsboat/blob/master/CHANGELOG.md#2451---2026-11-05">changelog</a>.
+            </p>
+        ]]></summary>
+    </entry>
 
     <entry>
         <title>GHSA-pvg7-gjxf-23c9: Podboat could write at arbitrary paths</title>
