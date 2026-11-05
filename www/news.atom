@@ -8,7 +8,7 @@
         <name>Alexander Batischev</name>
         <email>eual.jp@gmail.com</email>
     </author>
-    <updated>2026-11-05T16:02:00Z</updated>
+    <updated>2026-11-05T16:12:00Z</updated>
 
     <entry>
         <title>GHSA-78q5-mpjq-5q34: Remote code execution via manual OPML import</title>
@@ -57,10 +57,10 @@
     </entry>
 
     <entry>
-        <title>Newsboat 2.45.1 is out with security fixes</title>
+        <title>Newsboat 2.45.1 is out with a security fix</title>
         <link href="https://newsboat.org/releases/2.45.1/docs/newsboat.html" />
         <id>https://newsboat.org/releases/2.45.1/docs/newsboat.html</id>
-        <updated>2026-11-05T16:01:00Z</updated>
+        <updated>2026-11-05T16:12:00Z</updated>
         <published>2026-11-05T16:01:00Z</published>
         <author>
             <name>Alexander Batischev</name>
